@@ -2,7 +2,7 @@
 
 A production-ready AI Document Intelligence Engine that understands documents using OCR, Retrieval-Augmented Generation (RAG), and Large Language Models.
 
-## 🚀 Project Goal
+##  Project Goal
 
 Build an AI backend capable of:
 
@@ -27,7 +27,7 @@ Build an AI backend capable of:
 
 ## 📌 Project Status
 
-🚧 In Development
+In Development
 
 Current Phase:
 
