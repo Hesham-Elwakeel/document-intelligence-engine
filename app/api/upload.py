@@ -3,7 +3,6 @@ from fastapi import UploadFile
 from fastapi import File
 from app.services.file_service import save_file
 from app.pipelines.document_pipeline import DocumentPipeline
-
 router = APIRouter()
 
 
@@ -33,3 +32,4 @@ async def upload_file(file: UploadFile = File(...)):
         "saved_path": str(saved_path),
         "pipeline": result
     }
+
