@@ -1,8 +1,8 @@
 # 📄 Document Intelligence Engine
 
-A production-ready AI Document Intelligence Engine built with FastAPI and modern AI technologies.
+A production-ready AI Document Intelligence Engine built with **FastAPI**, **Computer Vision**, and **Large Language Models**.
 
-The system is designed to understand, process, and retrieve information from documents using OCR, Retrieval-Augmented Generation (RAG), Vector Databases, and Large Language Models.
+The system is designed to understand, process, and retrieve information from documents using OCR, Retrieval-Augmented Generation (RAG), Vector Databases, and modern AI techniques.
 
 ---
 
@@ -12,44 +12,46 @@ Build a scalable AI backend capable of:
 
 - Uploading PDF and image documents
 - Detecting document types automatically
-- Extracting text from PDFs
+- Extracting text from digital PDFs
 - Performing OCR on scanned documents
+- Classifying documents before processing
 - Cleaning and preprocessing extracted text
 - Splitting documents into semantic chunks
 - Generating embeddings
 - Storing embeddings in a Vector Database
-- Semantic search
+- Semantic Search
 - Retrieval-Augmented Generation (RAG)
 - Question Answering over documents
 - Document Summarization
-- Structured JSON extraction from documents
+- Structured JSON extraction
 
 ---
 
 # 🛠 Tech Stack
 
-### Backend
+## Backend
 
 - Python
 - FastAPI
 - Uvicorn
+- Pydantic
 
-### AI
+## AI & Document Processing
 
 - PyMuPDF
-- PaddleOCR *(Coming Soon)*
-- OpenAI API *(Coming Soon)*
+- PaddleOCR *(Integration in Progress)*
+- OpenAI API *(Planned)*
 
-### Vector Database
+## Vector Database
 
-- Qdrant *(Coming Soon)*
+- Qdrant *(Planned)*
 
-### Future Infrastructure
+## Infrastructure
 
-- Docker
-- Docker Compose
-- Redis
-- PostgreSQL
+- Docker *(Planned)*
+- Docker Compose *(Planned)*
+- PostgreSQL *(Planned)*
+- Redis *(Planned)*
 
 ---
 
@@ -61,7 +63,6 @@ document-intelligence-engine/
 ├── app/
 │   ├── api/
 │   ├── core/
-│   ├── models/
 │   ├── pipelines/
 │   ├── schemas/
 │   ├── services/
@@ -83,20 +84,21 @@ document-intelligence-engine/
 
 # ✅ Features Implemented
 
-## Backend
+## Backend Foundation
 
 - FastAPI application
 - Modular project architecture
 - API routing
 - Swagger documentation
+- Environment configuration
 
 ---
 
 ## File Upload
 
-- Upload PDF documents
-- Upload PNG images
-- Upload JPG images
+- PDF upload
+- PNG upload
+- JPG upload
 - File type validation
 - UUID-based file naming
 - Automatic file storage
@@ -106,55 +108,78 @@ document-intelligence-engine/
 ## Document Processing
 
 - Document Processing Pipeline
-- Document Type Detection
+- File Type Detection
 - Pipeline Routing
+- Processing Orchestrator
 
 ---
 
 ## PDF Processing
 
 - PDF Text Extraction
-- Page Traversal
-- Character Counting
-- Empty Document Detection
-- Preview Generation
+- Multi-page traversal
+- Character counting
+- Empty document detection
+- Text preview generation
+
+---
+
+## Document Intelligence
+
+- Document Classification
+- OCR Decision Engine
+- Unified Document Data Model
+- Pydantic-based Schemas
+
+---
+
+## Software Architecture
+
+- Service Layer
+- Pipeline Architecture
+- Separation of Concerns
+- Modular Design
+- Clean Code Principles
 
 ---
 
 # 🚧 Current Progress
 
-Current Phase
+## Current Phase
 
-> PDF Text Extraction
+> OCR Integration with PaddleOCR
 
-Completed Roadmap
+## Completed Milestones
 
-- ✅ Project Initialization
-- ✅ FastAPI Setup
-- ✅ API Routing
-- ✅ Upload Endpoint
-- ✅ File Validation
-- ✅ File Storage Service
-- ✅ Document Processing Pipeline
-- ✅ Document Type Detection
-- ✅ PDF Text Extraction
+### Milestone 1 — Project Foundation ✅
 
-Upcoming
+- Project Initialization
+- FastAPI Setup
+- API Routing
+- Swagger Documentation
 
-- OCR Integration
+### Milestone 2 — Document Processing Core ✅
+
+- Upload Endpoint
+- File Validation
+- File Storage Service
+- Document Processing Pipeline
+- Document Type Detection
+- PDF Text Extraction
+- Document Classification
+- Unified Document Model (Pydantic)
+
+### Milestone 3 — OCR Integration 🚧
+
+Current Work:
+
+- PaddleOCR Integration
+- OCR Service
 - Image Processing
-- Text Cleaning
-- Chunking
-- Embeddings
-- Vector Database
-- Semantic Search
-- RAG Pipeline
-- LLM Integration
-- Production Deployment
 
 ---
 
-# 🏗 Architecture
+# 🏗 Current Architecture
 
 ```text
 Client
@@ -174,69 +199,53 @@ File Service
    ▼
 Document Pipeline
    │
-   ├──────────────┐
-   ▼              ▼
-PDF Service   Image Service (Coming Soon)
-   │
-   ▼
-Extract Text
+   ├──────────────────────┐
+   ▼                      ▼
+PDF Pipeline        Image Pipeline
+   │                      │
+   ▼                      ▼
+PDF Service         OCR Service
+   │                      │
+   ▼                      ▼
+Document Classifier        │
+   │                       │
+   ├───────────────┐       │
+   ▼               ▼       ▼
+Direct Text      OCR Required
+        │              │
+        └───────► DocumentData
 ```
 
 ---
 
-# 📌 Next Milestone
+# 🛣 Roadmap
 
-Implement OCR support for scanned PDF documents and images using PaddleOCR.
+## ✅ Completed
 
-Future pipeline:
+- FastAPI Backend
+- File Upload
+- File Storage
+- Processing Pipeline
+- PDF Extraction
+- Document Classification
+- Pydantic Models
 
-```text
-Upload
+## 🚧 In Progress
 
-↓
+- PaddleOCR Integration
+- OCR Engine
+- Image Processing
 
-Save File
+## 📅 Upcoming
 
-↓
-
-Detect File Type
-
-↓
-
-PDF / Image Pipeline
-
-↓
-
-OCR (if needed)
-
-↓
-
-Clean Text
-
-↓
-
-Chunk Text
-
-↓
-
-Embeddings
-
-↓
-
-Qdrant
-
-↓
-
-RAG
-
-↓
-
-LLM
-
-↓
-
-Answer
-```
+- Text Cleaning
+- Document Chunking
+- Embedding Generation
+- Qdrant Integration
+- Semantic Search
+- RAG Pipeline
+- LLM Integration
+- Docker Deployment
 
 ---
 
@@ -244,14 +253,14 @@ Answer
 
 This project is being developed as a production-oriented AI Engineering portfolio project.
 
-The goal is not only to build an AI application, but also to follow software engineering best practices including:
+The goal is not only to build an AI application but also to follow modern software engineering practices including:
 
 - Clean Architecture
+- SOLID Principles
 - Separation of Concerns
-- Service Layer
-- Pipeline Architecture
-- Modular Design
-- Production-ready Code
+- Pipeline-Based Processing
+- Service-Oriented Design
+- Production-Ready Code
 
 ---
 
@@ -259,10 +268,8 @@ The goal is not only to build an AI application, but also to follow software eng
 
 **Hesham Elwakeel**
 
-AI Engineer | Data Scientist
+**AI Engineer | Computer Vision Engineer**
 
-Building production-ready AI systems with Python, FastAPI, Computer Vision, and Large Language Models.
+Building production-ready AI systems using Python, FastAPI, Computer Vision, Retrieval-Augmented Generation (RAG), and Large Language Models.
 
 ---
-
-Built as a production-oriented AI Engineering portfolio project.
