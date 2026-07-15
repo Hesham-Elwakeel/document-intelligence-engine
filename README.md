@@ -1,4 +1,4 @@
-# 📄 Document Intelligence Engine
+#  Document Intelligence Engine
 
 A production-ready AI Document Intelligence Engine built with **FastAPI**, **Computer Vision**, and **Large Language Models**.
 
@@ -6,7 +6,7 @@ The system is designed to understand, process, and retrieve information from doc
 
 ---
 
-# 🚀 Project Goal
+#  Project Goal
 
 Build a scalable AI backend capable of:
 
@@ -55,7 +55,7 @@ Build a scalable AI backend capable of:
 
 ---
 
-# 📂 Project Structure
+#  Project Structure
 
 ```text
 document-intelligence-engine/
@@ -82,7 +82,7 @@ document-intelligence-engine/
 
 ---
 
-# ✅ Features Implemented
+#  Features Implemented
 
 ## Backend Foundation
 
@@ -143,7 +143,7 @@ document-intelligence-engine/
 
 ---
 
-# 🚧 Current Progress
+#  Current Progress
 
 ## Current Phase
 
@@ -169,7 +169,7 @@ document-intelligence-engine/
 - Document Classification
 - Unified Document Model (Pydantic)
 
-### Milestone 3 — OCR Integration 🚧
+### Milestone 3 — OCR Integration 
 
 Current Work:
 
@@ -179,7 +179,7 @@ Current Work:
 
 ---
 
-# 🏗 Current Architecture
+#  Current Architecture
 
 ```text
 Client
@@ -218,9 +218,9 @@ Direct Text      OCR Required
 
 ---
 
-# 🛣 Roadmap
+#  Roadmap
 
-## ✅ Completed
+##  Completed
 
 - FastAPI Backend
 - File Upload
@@ -230,13 +230,13 @@ Direct Text      OCR Required
 - Document Classification
 - Pydantic Models
 
-## 🚧 In Progress
+##  In Progress
 
 - PaddleOCR Integration
 - OCR Engine
 - Image Processing
 
-## 📅 Upcoming
+##  Upcoming
 
 - Text Cleaning
 - Document Chunking
@@ -249,7 +249,7 @@ Direct Text      OCR Required
 
 ---
 
-# 🎯 Project Vision
+#  Project Vision
 
 This project is being developed as a production-oriented AI Engineering portfolio project.
 
