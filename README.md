@@ -27,7 +27,7 @@ Build a scalable AI backend capable of:
 
 ---
 
-# 🛠 Tech Stack
+#  Tech Stack
 
 ## Backend
 
