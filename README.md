@@ -151,14 +151,14 @@ document-intelligence-engine/
 
 ## Completed Milestones
 
-### Milestone 1 — Project Foundation ✅
+### Milestone 1 — Project Foundation 
 
 - Project Initialization
 - FastAPI Setup
 - API Routing
 - Swagger Documentation
 
-### Milestone 2 — Document Processing Core ✅
+### Milestone 2 — Document Processing Core 
 
 - Upload Endpoint
 - File Validation
@@ -273,4 +273,5 @@ The goal is not only to build an AI application but also to follow modern softwa
 Building production-ready AI systems using Python, FastAPI, Computer Vision, Retrieval-Augmented Generation (RAG), and Large Language Models.
 
 · [LinkedIn](https://linkedin.com/in/hesham-elwakeel) · heshamelwakeel17@gmail.com
+
 ---
