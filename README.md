@@ -272,4 +272,5 @@ The goal is not only to build an AI application but also to follow modern softwa
 
 Building production-ready AI systems using Python, FastAPI, Computer Vision, Retrieval-Augmented Generation (RAG), and Large Language Models.
 
+· [LinkedIn](https://linkedin.com/in/hesham-elwakeel) · heshamelwakeel17@gmail.com
 ---
