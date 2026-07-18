@@ -82,6 +82,49 @@ document-intelligence-engine/
 
 ---
 
+#  Processing Workflow
+
+```text
+Upload Document
+        │
+        ▼
+Validate File Type
+        │
+        ▼
+Save File
+        │
+        ▼
+Detect File Type
+        │
+        ▼
+Document Pipeline
+        │
+        ├──────────────┐
+        ▼              ▼
+   PDF Pipeline   Image Pipeline
+        │              │
+        ▼              ▼
+ Text Extraction   PaddleOCR
+        │              │
+        └──────┬───────┘
+               ▼
+        DocumentData
+               ▼
+        Text Cleaning
+               ▼
+        Chunking
+               ▼
+        Embeddings
+               ▼
+         Qdrant Vector DB
+               ▼
+         Semantic Retrieval
+               ▼
+          Large Language Model
+               ▼
+            Final Answer
+```
+
 #  Features Implemented
 
 ## Backend Foundation
