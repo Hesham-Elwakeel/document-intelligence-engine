@@ -1,4 +1,4 @@
-#  Document Intelligence Engine
+# 📄 Document Intelligence Engine
 
 A production-ready AI Document Intelligence Engine built with **FastAPI**, **Computer Vision**, and **Large Language Models**.
 
@@ -6,7 +6,7 @@ The system is designed to understand, process, and retrieve information from doc
 
 ---
 
-#  Project Goal
+# 🚀 Project Goal
 
 Build a scalable AI backend capable of:
 
@@ -17,7 +17,7 @@ Build a scalable AI backend capable of:
 - Classifying documents before processing
 - Cleaning and preprocessing extracted text
 - Splitting documents into semantic chunks
-- Generating embeddings
+- Generating vector embeddings
 - Storing embeddings in a Vector Database
 - Semantic Search
 - Retrieval-Augmented Generation (RAG)
@@ -27,7 +27,7 @@ Build a scalable AI backend capable of:
 
 ---
 
-#  Tech Stack
+# 🛠 Tech Stack
 
 ## Backend
 
@@ -39,12 +39,14 @@ Build a scalable AI backend capable of:
 ## AI & Document Processing
 
 - PyMuPDF
-- PaddleOCR *(Integration in Progress)*
+- PaddleOCR
+- Sentence Transformers
+- BAAI/bge-small-en-v1.5
 - OpenAI API *(Planned)*
 
 ## Vector Database
 
-- Qdrant *(Planned)*
+- Qdrant *(In Progress)*
 
 ## Infrastructure
 
@@ -55,26 +57,46 @@ Build a scalable AI backend capable of:
 
 ---
 
-#  Project Structure
+# 📂 Project Structure
 
 ```text
 document-intelligence-engine/
 
 ├── app/
-│   ├── api/
-│   ├── core/
-│   ├── pipelines/
-│   ├── schemas/
-│   ├── services/
-│   ├── utils/
-│   └── main.py
 │
+├── api/
+│
+├── core/
+│
+├── pipelines/
+│   └── document_pipeline.py
+│
+├── schemas/
+│   ├── chunk.py
+│   ├── document.py
+│   ├── embedding.py
+│   └── pipeline.py
+│
+├── services/
+│   ├── chunking_service.py
+│   ├── document_classifier.py
+│   ├── embedding_service.py
+│   ├── file_service.py
+│   ├── ocr_service.py
+│   ├── pdf_service.py
+│   └── text_cleaner.py
+│
+├── utils/
+│
+└── main.py
+
 ├── data/
 │   └── uploads/
-│
+
 ├── docs/
+
 ├── tests/
-│
+
 ├── requirements.txt
 ├── README.md
 └── .env.example
@@ -82,7 +104,7 @@ document-intelligence-engine/
 
 ---
 
-#  Processing Workflow
+# 🔄 Processing Workflow
 
 ```text
 Upload Document
@@ -99,33 +121,35 @@ Detect File Type
         ▼
 Document Pipeline
         │
-        ├──────────────┐
-        ▼              ▼
-   PDF Pipeline   Image Pipeline
-        │              │
-        ▼              ▼
- Text Extraction   PaddleOCR
-        │              │
-        └──────┬───────┘
-               ▼
-        DocumentData
-               ▼
-        Text Cleaning
-               ▼
-        Chunking
-               ▼
-        Embeddings
-               ▼
-         Qdrant Vector DB
-               ▼
-         Semantic Retrieval
-               ▼
-          Large Language Model
-               ▼
-            Final Answer
+        ├──────────────────────┐
+        ▼                      ▼
+   PDF Pipeline          Image Pipeline
+        │                      │
+        ▼                      ▼
+PDF Extraction           PaddleOCR
+        │                      │
+        └──────────────┬───────┘
+                       ▼
+                DocumentData
+                       ▼
+                Text Cleaning
+                       ▼
+                  Chunking
+                       ▼
+          BGE Embedding Generation
+                       ▼
+              Qdrant Vector DB
+                       ▼
+             Semantic Retrieval
+                       ▼
+             Large Language Model
+                       ▼
+                 Final Answer
 ```
 
-#  Features Implemented
+---
+
+# ✅ Features Implemented
 
 ## Backend Foundation
 
@@ -167,12 +191,39 @@ Document Pipeline
 
 ---
 
+## OCR Processing
+
+- PaddleOCR Integration
+- OCR Service
+- Image Text Extraction
+- Scanned PDF Support
+
+---
+
+## Text Processing
+
+- Text Cleaning
+- Smart Text Chunking
+- Overlapping Chunks
+- Chunk Metadata
+
+---
+
+## Embedding Generation
+
+- Sentence Transformers
+- BAAI/bge-small-en-v1.5
+- Normalized Embeddings
+- Embedding Data Model
+
+---
+
 ## Document Intelligence
 
 - Document Classification
 - OCR Decision Engine
 - Unified Document Data Model
-- Pydantic-based Schemas
+- Pydantic Schemas
 
 ---
 
@@ -186,22 +237,26 @@ Document Pipeline
 
 ---
 
-#  Current Progress
+# 🚧 Current Progress
 
 ## Current Phase
 
-> OCR Integration with PaddleOCR
+> Vector Database Integration (Qdrant)
+
+---
 
 ## Completed Milestones
 
-### Milestone 1 — Project Foundation 
+### Milestone 1 — Project Foundation ✅
 
 - Project Initialization
 - FastAPI Setup
 - API Routing
 - Swagger Documentation
 
-### Milestone 2 — Document Processing Core 
+---
+
+### Milestone 2 — Document Processing Core ✅
 
 - Upload Endpoint
 - File Validation
@@ -212,17 +267,29 @@ Document Pipeline
 - Document Classification
 - Unified Document Model (Pydantic)
 
-### Milestone 3 — OCR Integration 
+---
 
-Current Work:
+### Milestone 3 — OCR Integration ✅
 
 - PaddleOCR Integration
 - OCR Service
 - Image Processing
+- Scanned PDF Processing
 
 ---
 
-#  Current Architecture
+### Milestone 4 — Text Processing & Embeddings ✅
+
+- Text Cleaning
+- Chunking Service
+- Overlapping Chunks
+- Embedding Service
+- Sentence Transformers Integration
+- BAAI/bge-small-en-v1.5 Integration
+
+---
+
+# 🏗 Current Architecture
 
 ```text
 Client
@@ -242,57 +309,75 @@ File Service
    ▼
 Document Pipeline
    │
-   ├──────────────────────┐
-   ▼                      ▼
-PDF Pipeline        Image Pipeline
-   │                      │
-   ▼                      ▼
-PDF Service         OCR Service
-   │                      │
-   ▼                      ▼
-Document Classifier        │
-   │                       │
-   ├───────────────┐       │
-   ▼               ▼       ▼
-Direct Text      OCR Required
-        │              │
-        └───────► DocumentData
+   ├────────────────────────────┐
+   ▼                            ▼
+PDF Pipeline              Image Pipeline
+   │                            │
+   ▼                            ▼
+PDF Service               OCR Service
+   │                            │
+   ├──────────────┐             │
+   ▼              ▼             ▼
+Direct Text    OCR Required
+        │             │
+        └─────────────┘
+               ▼
+         DocumentData
+               ▼
+         Text Cleaner
+               ▼
+      Chunking Service
+               ▼
+     Embedding Service
+               ▼
+        EmbeddingData
+               ▼
+      Qdrant (Next Step)
 ```
 
 ---
 
-#  Roadmap
+# 🗺 Roadmap
 
-##  Completed
+## ✅ Completed
 
 - FastAPI Backend
 - File Upload
 - File Storage
-- Processing Pipeline
 - PDF Extraction
+- OCR Integration
 - Document Classification
-- Pydantic Models
-
-##  In Progress
-
-- PaddleOCR Integration
-- OCR Engine
-- Image Processing
-
-##  Upcoming
-
 - Text Cleaning
 - Document Chunking
 - Embedding Generation
-- Qdrant Integration
-- Semantic Search
-- RAG Pipeline
-- LLM Integration
-- Docker Deployment
+- Pydantic Models
 
 ---
 
-#  Project Vision
+## 🚧 In Progress
+
+- Qdrant Integration
+- Vector Storage
+- Collection Management
+
+---
+
+## 📌 Upcoming
+
+- Semantic Search
+- Retriever
+- RAG Pipeline
+- OpenAI Integration
+- Question Answering
+- Document Summarization
+- Structured JSON Extraction
+- Docker Deployment
+- PostgreSQL
+- Redis
+
+---
+
+# 🎯 Project Vision
 
 This project is being developed as a production-oriented AI Engineering portfolio project.
 
@@ -311,10 +396,13 @@ The goal is not only to build an AI application but also to follow modern softwa
 
 **Hesham Elwakeel**
 
-**AI Engineer | Computer Vision Engineer**
+**AI Engineer | Computer Vision Engineer | Data Scientist**
 
 Building production-ready AI systems using Python, FastAPI, Computer Vision, Retrieval-Augmented Generation (RAG), and Large Language Models.
 
-· [LinkedIn](https://linkedin.com/in/hesham-elwakeel) · heshamelwakeel17@gmail.com
+- LinkedIn: https://linkedin.com/in/hesham-elwakeel
+- Email: heshamelwakeel17@gmail.com
 
 ---
+
+⭐ **Current Status:** The project now implements a complete document ingestion pipeline (**Upload → OCR → Cleaning → Chunking → Embeddings**) and is entering the Vector Database & Retrieval phase to build a production-ready RAG system.
