@@ -6,7 +6,7 @@ The system is designed to understand, process, and retrieve information from doc
 
 ---
 
-# 🚀 Project Goal
+#  Project Goal
 
 Build a scalable AI backend capable of:
 
@@ -27,7 +27,7 @@ Build a scalable AI backend capable of:
 
 ---
 
-# 🛠 Tech Stack
+#  Tech Stack
 
 ## Backend
 
@@ -57,7 +57,7 @@ Build a scalable AI backend capable of:
 
 ---
 
-# 📂 Project Structure
+#  Project Structure
 
 ```text
 document-intelligence-engine/
@@ -104,7 +104,7 @@ document-intelligence-engine/
 
 ---
 
-# 🔄 Processing Workflow
+#  Processing Workflow
 
 ```text
 Upload Document
@@ -149,7 +149,7 @@ PDF Extraction           PaddleOCR
 
 ---
 
-# ✅ Features Implemented
+#  Features Implemented
 
 ## Backend Foundation
 
@@ -237,7 +237,7 @@ PDF Extraction           PaddleOCR
 
 ---
 
-# 🚧 Current Progress
+#  Current Progress
 
 ## Current Phase
 
@@ -247,7 +247,7 @@ PDF Extraction           PaddleOCR
 
 ## Completed Milestones
 
-### Milestone 1 — Project Foundation ✅
+### Milestone 1 — Project Foundation 
 
 - Project Initialization
 - FastAPI Setup
@@ -256,7 +256,7 @@ PDF Extraction           PaddleOCR
 
 ---
 
-### Milestone 2 — Document Processing Core ✅
+### Milestone 2 — Document Processing Core 
 
 - Upload Endpoint
 - File Validation
@@ -269,7 +269,7 @@ PDF Extraction           PaddleOCR
 
 ---
 
-### Milestone 3 — OCR Integration ✅
+### Milestone 3 — OCR Integration 
 
 - PaddleOCR Integration
 - OCR Service
@@ -278,7 +278,7 @@ PDF Extraction           PaddleOCR
 
 ---
 
-### Milestone 4 — Text Processing & Embeddings ✅
+### Milestone 4 — Text Processing & Embeddings 
 
 - Text Cleaning
 - Chunking Service
@@ -289,7 +289,7 @@ PDF Extraction           PaddleOCR
 
 ---
 
-# 🏗 Current Architecture
+#  Current Architecture
 
 ```text
 Client
@@ -337,9 +337,9 @@ Direct Text    OCR Required
 
 ---
 
-# 🗺 Roadmap
+#  Roadmap
 
-## ✅ Completed
+##  Completed
 
 - FastAPI Backend
 - File Upload
@@ -354,7 +354,7 @@ Direct Text    OCR Required
 
 ---
 
-## 🚧 In Progress
+##  In Progress
 
 - Qdrant Integration
 - Vector Storage
@@ -362,7 +362,7 @@ Direct Text    OCR Required
 
 ---
 
-## 📌 Upcoming
+##  Upcoming
 
 - Semantic Search
 - Retriever
@@ -377,7 +377,7 @@ Direct Text    OCR Required
 
 ---
 
-# 🎯 Project Vision
+#  Project Vision
 
 This project is being developed as a production-oriented AI Engineering portfolio project.
 
@@ -392,7 +392,7 @@ The goal is not only to build an AI application but also to follow modern softwa
 
 ---
 
-# 👨‍💻 Author
+#  Author
 
 **Hesham Elwakeel**
 
@@ -400,9 +400,8 @@ The goal is not only to build an AI application but also to follow modern softwa
 
 Building production-ready AI systems using Python, FastAPI, Computer Vision, Retrieval-Augmented Generation (RAG), and Large Language Models.
 
-- LinkedIn: https://linkedin.com/in/hesham-elwakeel
-- Email: heshamelwakeel17@gmail.com
+- LinkedIn: https://linkedin.com/in/hesham-elwakeel - Email: heshamelwakeel17@gmail.com
 
 ---
 
-⭐ **Current Status:** The project now implements a complete document ingestion pipeline (**Upload → OCR → Cleaning → Chunking → Embeddings**) and is entering the Vector Database & Retrieval phase to build a production-ready RAG system.
+ **Current Status:** The project now implements a complete document ingestion pipeline (**Upload → OCR → Cleaning → Chunking → Embeddings**) and is entering the Vector Database & Retrieval phase to build a production-ready RAG system.
