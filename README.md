@@ -403,5 +403,4 @@ Building production-ready AI systems using Python, FastAPI, Computer Vision, Ret
 - LinkedIn: https://linkedin.com/in/hesham-elwakeel - Email: heshamelwakeel17@gmail.com
 
 ---
-
  **Current Status:** The project now implements a complete document ingestion pipeline (**Upload → OCR → Cleaning → Chunking → Embeddings**) and is entering the Vector Database & Retrieval phase to build a production-ready RAG system.
