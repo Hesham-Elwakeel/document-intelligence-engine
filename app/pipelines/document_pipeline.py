@@ -10,6 +10,7 @@ Responsibilities:
 - Extract text directly from text-based PDFs.
 - Classify PDFs to determine whether OCR is required.
 - Run OCR for scanned PDFs when necessary.
+- Clean extracted text.
 - Return a unified processing result for downstream components.
 
 This class acts as the orchestrator of the document processing workflow,
@@ -17,12 +18,27 @@ delegating the actual extraction and OCR tasks to specialized services.
 """
 
 from pathlib import Path
+
 from app.services.pdf_service import extract_text_from_pdf
 from app.services.document_classifier import DocumentClassifier
 from app.services.ocr_service import OCRService
+from app.services.text_cleaner import TextCleaner
+from app.services.chunking_service import ChunkService
+from app.services.embedding_service import EmbeddingService
 
 
 class DocumentPipeline:
+    """
+    Main orchestrator responsible for routing documents through the
+    appropriate processing pipeline.
+    """
+
+    def __init__(self):
+        self.cleaner = TextCleaner()
+        self.classifier = DocumentClassifier()
+        self.ocr_service = OCRService()
+        self.chunk_service = ChunkService()
+        self.embedding_service = EmbeddingService()
 
     async def process(self, file_path: Path):
 
@@ -40,56 +56,94 @@ class DocumentPipeline:
 
         else:
             raise ValueError(f"Unsupported file type: {extension}")
-    
 
     async def _process_pdf(self, file_path: Path):
 
         print("PDF pipeline selected")
 
+        # -------------------------------------------------------------
+        # Extract text directly from PDF
+        # -------------------------------------------------------------
         document = extract_text_from_pdf(file_path)
 
-        # print(document.pages)
-        # print(document.characters)
-        # print(document.is_empty)
+        # -------------------------------------------------------------
+        # Clean extracted text
+        # -------------------------------------------------------------
+        document.text = self.cleaner.clean(document.text)
+        document.characters = len(document.text)
+        document.is_empty = len(document.text.strip()) == 0
 
-        # Take a decision based on the extracted document
-        classifier = DocumentClassifier()
+        # -------------------------------------------------------------
+        # Decide whether OCR is required
+        # -------------------------------------------------------------
+        decision = self.classifier.classify(document)
 
-
-        decision = classifier.classify(document)
-
+        # -------------------------------------------------------------
+        # OCR Pipeline
+        # -------------------------------------------------------------
         if decision == "ocr":
 
-            ocr_service = OCRService()
+            document = self.ocr_service.extract_text(file_path)
 
-            ocr_document = ocr_service.extract_text(file_path)
+            document.text = self.cleaner.clean(document.text)
+            document.characters = len(document.text)
+            document.is_empty = len(document.text.strip()) == 0
 
-            return {
-                "pipeline": "pdf",
-                "decision": decision,
-                "characters": ocr_document.characters,
-                "is_empty": ocr_document.is_empty,
-                "ocr_preview": ocr_document.text[:500]
-            }
+        # -------------------------------------------------------------
+        # Split document into chunks
+        # -------------------------------------------------------------
+        chunks = self.chunk_service.split(document.text)
 
-        print(f"Decision: {decision}")
+        # -------------------------------------------------------------
+        # Generate embeddings
+        # -------------------------------------------------------------
+        embeddings = self.embedding_service.encode(chunks)
 
+        # -------------------------------------------------------------
+        # Final response
+        # -------------------------------------------------------------
         return {
             "pipeline": "pdf",
             "decision": decision,
             "pages": document.pages,
             "characters": document.characters,
             "is_empty": document.is_empty,
-            "preview": document.text[:500]
+            "preview": document.text[:500],
+            "chunks": len(chunks),
+            "embeddings": len(embeddings),
         }
-    
-
 
     async def _process_image(self, file_path: Path):
 
         print("Image pipeline selected")
 
+        # -------------------------------------------------------------
+        # OCR Extraction
+        # -------------------------------------------------------------
+        document = self.ocr_service.extract_text(file_path)
+
+        # -------------------------------------------------------------
+        # Clean OCR text
+        # -------------------------------------------------------------
+        document.text = self.cleaner.clean(document.text)
+        document.characters = len(document.text)
+        document.is_empty = len(document.text.strip()) == 0
+
+        # -------------------------------------------------------------
+        # Split into chunks
+        # -------------------------------------------------------------
+        chunks = self.chunk_service.split(document.text)
+
+        # -------------------------------------------------------------
+        # Generate embeddings
+        # -------------------------------------------------------------
+        embeddings = self.embedding_service.encode(chunks)
+
         return {
             "pipeline": "image",
-            "file": str(file_path)
-      }
+            "characters": document.characters,
+            "is_empty": document.is_empty,
+            "preview": document.text[:500],
+            "chunks": len(chunks),
+            "embeddings": len(embeddings),
+        }

@@ -1,30 +1,30 @@
 from pathlib import Path
+
 from paddleocr import PaddleOCR
+
 from app.schemas.document import DocumentData
 
-"""class OCRService:
-    
-    A service class  Responsible for extracting text from scanned documents
-    
-    def extract_text(self, file_path: Path):
-
-        print(f"Running OCR on file: {file_path}")
-
-        return "OCR Processing will be implemented later"
-    """
+from app.services.text_cleaner import TextCleaner
 
 class OCRService:
+    """
+    Service responsible for extracting text from scanned documents
+    using PaddleOCR.
+    """
 
     def __init__(self):
 
         self.ocr = PaddleOCR(
-            use_doc_orientation_classify=False, #do not detect page orientation.
-            use_doc_unwarping=False, #do not correct warped or curved documents.
-            use_textline_orientation=False, #do not detect text line orientation.
+            use_doc_orientation_classify=False,
+            use_doc_unwarping=False,
+            use_textline_orientation=False,
             lang="en"
         )
 
-    def extract_text(self, file_path: Path) -> dict:
+    def extract_text(self, file_path: Path) -> DocumentData:
+        """
+        run OCR on an image or scanned PDF and return the extracted text
+        """
 
         print(f"Running OCR on: {file_path}")
 
@@ -39,16 +39,16 @@ class OCRService:
             source="ocr"
         )
 
-
     def _extract_plain_text(self, result) -> str:
-    #Convert PaddleOCR output into plain text.
+        """
+        Convert PaddleOCR output into plain text.
+        """
 
         lines = []
 
         for page in result:
 
-            if hasattr(page, "rec_texts"):
+            if isinstance(page, dict):
+                lines.extend(page.get("rec_texts", []))
 
-                lines.extend(page.rec_texts)
-
-        return "\n".join(lines)     
+        return "\n".join(lines)
