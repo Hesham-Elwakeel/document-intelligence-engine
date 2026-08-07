@@ -1,4 +1,4 @@
-# 📄 Document Intelligence Engine
+#  Document Intelligence Engine
 
 A production-ready AI Document Intelligence Engine built with **FastAPI**, **Computer Vision**, **Large Language Models (LLMs)**, and **Vector Databases**.
 
@@ -6,7 +6,7 @@ The system is designed to understand, process, index, retrieve, and reason over 
 
 ---
 
-# 🚀 Project Goal
+#  Project Goal
 
 Build a scalable AI backend capable of:
 
@@ -27,7 +27,7 @@ Build a scalable AI backend capable of:
 
 ---
 
-# 🛠 Tech Stack
+#  Tech Stack
 
 ## Backend
 
@@ -50,14 +50,14 @@ Build a scalable AI backend capable of:
 
 ## Infrastructure
 
-* Docker ✅
+* Docker 
 * Docker Compose *(Planned)*
 * PostgreSQL *(Planned)*
 * Redis *(Planned)*
 
 ---
 
-# 📂 Project Structure
+#  Project Structure
 
 ```text
 document-intelligence-engine/
@@ -101,7 +101,7 @@ document-intelligence-engine/
 
 ---
 
-# 🔄 Processing Workflow
+#  Processing Workflow
 
 ```text
 Upload Document
@@ -146,7 +146,7 @@ PDF Extraction           PaddleOCR
 
 ---
 
-# ✨ Features Implemented
+#  Features Implemented
 
 ## Backend Foundation
 
@@ -242,7 +242,7 @@ PDF Extraction           PaddleOCR
 
 ---
 
-# 📈 Current Progress
+#  Current Progress
 
 ## Current Phase
 
@@ -304,7 +304,7 @@ PDF Extraction           PaddleOCR
 
 ---
 
-# 🏗 Current Architecture
+# Current Architecture
 
 ```text
 Client
@@ -352,9 +352,9 @@ Direct Text    OCR Required
 
 ---
 
-# 🗺 Roadmap
+#  Roadmap
 
-## ✅ Completed
+##  Completed
 
 * FastAPI Backend
 * File Upload
@@ -370,7 +370,7 @@ Direct Text    OCR Required
 
 ---
 
-## 🚧 In Progress
+##  In Progress
 
 * Qdrant Integration
 * Vector Storage
@@ -378,7 +378,7 @@ Direct Text    OCR Required
 
 ---
 
-## 📌 Upcoming
+## Upcoming
 
 * Semantic Search
 * Retriever
@@ -431,7 +431,7 @@ http://localhost:8000/docs
 
 ---
 
-# 🎯 Project Vision
+# Project Vision
 
 This project is being developed as a **production-oriented AI Engineering portfolio project**.
 
@@ -450,7 +450,7 @@ The final system will support a complete Retrieval-Augmented Generation (RAG) wo
 
 ---
 
-# 👨‍💻 Author
+# Author
 
 **Hesham Elwakeel**
 
@@ -466,25 +466,8 @@ Building production-ready AI systems using:
 * Large Language Models
 * Vector Databases
 
-**LinkedIn**
+**LinkedIn** https://linkedin.com/in/hesham-elwakeel
 
-https://linkedin.com/in/hesham-elwakeel
+**Email** [heshamelwakeel17@gmail.com](mailto:heshamelwakeel17@gmail.com)
 
-**Email**
 
-[heshamelwakeel17@gmail.com](mailto:heshamelwakeel17@gmail.com)
-
----
-
-# 📌 Current Status
-
-The project currently implements a complete document ingestion pipeline:
-
-**Upload → OCR → Text Cleaning → Chunking → Embedding Generation**
-
-The next milestone is integrating **Qdrant** to enable semantic retrieval and build a production-ready **Retrieval-Augmented Generation (RAG)** system.
-
-The long-term goal is to evolve this project into a scalable AI document understanding platform that follows modern AI Engineering, backend development, and deployment best practices.
-
-* Optimized Docker Build Context
-* .dockerignore
