@@ -1,6 +1,11 @@
 #  Document Intelligence Engine
 
 ![Python](https://img.shields.io/badge/Python-3.13-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.138-green)
+![Docker](https://img.shields.io/badge/Docker-Ready-2496ED)
+![PaddleOCR](https://img.shields.io/badge/OCR-PaddleOCR-orange)
+![Sentence Transformers](https://img.shields.io/badge/Embeddings-BGE-red)
+![Qdrant](https://img.shields.io/badge/VectorDB-In_Progress-purple)
 
 A production-ready AI Document Intelligence Engine built with **FastAPI**, **Computer Vision**, **Large Language Models (LLMs)**, and **Vector Databases**.
 
