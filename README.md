@@ -1,7 +1,5 @@
 #  Document Intelligence Engine
 
-![Python](https://img.shields.io/badge/Python-3.13-blue)
-
 A production-ready AI Document Intelligence Engine built with **FastAPI**, **Computer Vision**, **Large Language Models (LLMs)**, and **Vector Databases**.
 
 The system is designed to understand, process, index, retrieve, and reason over documents using OCR, semantic embeddings, Retrieval-Augmented Generation (RAG), and modern AI engineering practices.
