@@ -239,5 +239,252 @@ PDF Extraction           PaddleOCR
 * Dockerfile
 * Docker Image
 * Containerized FastAPI Application
+
+---
+
+# 📈 Current Progress
+
+## Current Phase
+
+> **Vector Database Integration (Qdrant)**
+
+---
+
+## Completed Milestones
+
+### Milestone 1 — Project Foundation
+
+* Project Initialization
+* FastAPI Setup
+* API Routing
+* Swagger Documentation
+
+---
+
+### Milestone 2 — Document Processing Core
+
+* Upload Endpoint
+* File Validation
+* File Storage Service
+* Document Processing Pipeline
+* Document Type Detection
+* PDF Text Extraction
+* Document Classification
+* Unified Document Model (Pydantic)
+
+---
+
+### Milestone 3 — OCR Integration
+
+* PaddleOCR Integration
+* OCR Service
+* Image Processing
+* Scanned PDF Processing
+
+---
+
+### Milestone 4 — Text Processing & Embeddings
+
+* Text Cleaning
+* Chunking Service
+* Overlapping Chunks
+* Embedding Service
+* Sentence Transformers Integration
+* BAAI/bge-small-en-v1.5 Integration
+
+---
+
+### Milestone 5 — Docker Containerization
+
+* Dockerfile
+* Docker Image
+* Containerized FastAPI Application
+* Optimized Docker Build Context
+* `.dockerignore`
+
+---
+
+# 🏗 Current Architecture
+
+```text
+Client
+   │
+   ▼
+FastAPI API
+   │
+   ▼
+Upload Endpoint
+   │
+   ▼
+Validation
+   │
+   ▼
+File Service
+   │
+   ▼
+Document Pipeline
+   │
+   ├────────────────────────────┐
+   ▼                            ▼
+PDF Pipeline              Image Pipeline
+   │                            │
+   ▼                            ▼
+PDF Service               OCR Service
+   │                            │
+   ├──────────────┐             │
+   ▼              ▼             ▼
+Direct Text    OCR Required
+        │             │
+        └─────────────┘
+               ▼
+         DocumentData
+               ▼
+         Text Cleaner
+               ▼
+      Chunking Service
+               ▼
+     Embedding Service
+               ▼
+        EmbeddingData
+               ▼
+      Qdrant (Next Step)
+```
+
+---
+
+# 🗺 Roadmap
+
+## ✅ Completed
+
+* FastAPI Backend
+* File Upload
+* File Storage
+* PDF Extraction
+* OCR Integration
+* Document Classification
+* Text Cleaning
+* Document Chunking
+* Embedding Generation
+* Docker Containerization
+* Pydantic Models
+
+---
+
+## 🚧 In Progress
+
+* Qdrant Integration
+* Vector Storage
+* Collection Management
+
+---
+
+## 📌 Upcoming
+
+* Semantic Search
+* Retriever
+* RAG Pipeline
+* OpenAI Integration
+* Question Answering
+* Document Summarization
+* Structured JSON Extraction
+* Docker Compose
+* PostgreSQL
+* Redis
+
+---
+
+# 🚀 Quick Start
+
+## Clone Repository
+
+```bash
+git clone https://github.com/Hesham-Elwakeel/document-intelligence-engine.git
+
+cd document-intelligence-engine
+```
+
+---
+
+## Build Docker Image
+
+```bash
+docker build -t document-intelligence-engine .
+```
+
+---
+
+## Run Docker Container
+
+```bash
+docker run -p 8000:8000 --name document-engine document-intelligence-engine
+```
+
+---
+
+## API Documentation
+
+After starting the container, open:
+
+```text
+http://localhost:8000/docs
+```
+
+---
+
+# 🎯 Project Vision
+
+This project is being developed as a **production-oriented AI Engineering portfolio project**.
+
+The objective is not only to build an AI application but also to follow modern software engineering and MLOps practices, including:
+
+* Clean Architecture
+* SOLID Principles
+* Separation of Concerns
+* Pipeline-Based Processing
+* Service-Oriented Design
+* Docker Containerization
+* Modular AI Components
+* Production-Ready Code
+
+The final system will support a complete Retrieval-Augmented Generation (RAG) workflow, enabling intelligent question answering over enterprise documents.
+
+---
+
+# 👨‍💻 Author
+
+**Hesham Elwakeel**
+
+**AI Engineer | Computer Vision Engineer | Data Scientist**
+
+Building production-ready AI systems using:
+
+* Python
+* FastAPI
+* Computer Vision
+* OCR
+* Retrieval-Augmented Generation (RAG)
+* Large Language Models
+* Vector Databases
+
+**LinkedIn**
+
+https://linkedin.com/in/hesham-elwakeel
+
+**Email**
+
+[heshamelwakeel17@gmail.com](mailto:heshamelwakeel17@gmail.com)
+
+---
+
+# 📌 Current Status
+
+The project currently implements a complete document ingestion pipeline:
+
+**Upload → OCR → Text Cleaning → Chunking → Embedding Generation**
+
+The next milestone is integrating **Qdrant** to enable semantic retrieval and build a production-ready **Retrieval-Augmented Generation (RAG)** system.
+
+The long-term goal is to evolve this project into a scalable AI document understanding platform that follows modern AI Engineering, backend development, and deployment best practices.
+
 * Optimized Docker Build Context
 * .dockerignore
