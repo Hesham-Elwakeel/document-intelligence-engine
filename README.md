@@ -456,18 +456,10 @@ The final system will support a complete Retrieval-Augmented Generation (RAG) wo
 
 **AI Engineer | Computer Vision Engineer | Data Scientist**
 
-Building production-ready AI systems using:
+Building production-ready AI systems 
 
-* Python
-* FastAPI
-* Computer Vision
-* OCR
-* Retrieval-Augmented Generation (RAG)
-* Large Language Models
-* Vector Databases
+**LinkedIn** https://linkedin.com/in/hesham-elwakeel **Email** [heshamelwakeel17@gmail.com](mailto:heshamelwakeel17@gmail.com)
 
-**LinkedIn** https://linkedin.com/in/hesham-elwakeel
 
-**Email** [heshamelwakeel17@gmail.com](mailto:heshamelwakeel17@gmail.com)
 
 
