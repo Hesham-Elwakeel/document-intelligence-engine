@@ -10,3 +10,4 @@ class EmbeddingData(BaseModel):
 
     chunk_index: int | None = None
     page: int | None = None
+    source: str | None = None

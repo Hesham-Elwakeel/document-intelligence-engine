@@ -1,13 +1,20 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
-from app.schemas.document import DocumentData
+class DocumentData(BaseModel):
 
 
-class PipelineResult(BaseModel):
     """
-    Represents the final output of the document processing pipeline.
-    """
+    represents a processed document.
 
-    pipeline: str
-    decision: str
-    document: DocumentData
+    Stores the extracted text along with metadata such as character count,
+    page count, extraction source, and generated text chunks for downstream
+    Ai processing
+    """
+    text: str
+    characters: int
+    is_empty: bool
+
+    pages: int | None = None
+    source: str | None = None
+
+    chunks: list[str] = Field(default_factory=list)
