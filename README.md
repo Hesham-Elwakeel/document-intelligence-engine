@@ -1,11 +1,11 @@
 #  Document Intelligence Engine
 
-![Python](https://img.shields.io/badge/Python-3.13-blue)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.138-green)
-![Docker](https://img.shields.io/badge/Docker-Ready-2496ED)
-![PaddleOCR](https://img.shields.io/badge/OCR-PaddleOCR-orange)
-![Sentence Transformers](https://img.shields.io/badge/Embeddings-BGE-red)
-![Qdrant](https://img.shields.io/badge/VectorDB-In_Progress-purple)
+[![Python](https://img.shields.io/badge/Python-3.13-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.138-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker&logoColor=white)](https://www.docker.com/)
+[![PaddleOCR](https://img.shields.io/badge/OCR-PaddleOCR-00A67E)](https://github.com/PaddlePaddle/PaddleOCR)
+[![Sentence Transformers](https://img.shields.io/badge/Embeddings-SentenceTransformers-FF6F00)](https://www.sbert.net/)
+[![Qdrant](https://img.shields.io/badge/VectorDB-Qdrant-In%20Progress-DC244C)](https://qdrant.tech/)
 
 A production-ready AI Document Intelligence Engine built with **FastAPI**, **Computer Vision**, **Large Language Models (LLMs)**, and **Vector Databases**.
 
