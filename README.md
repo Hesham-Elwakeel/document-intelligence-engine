@@ -2,6 +2,10 @@
 
 A production-oriented AI Document Intelligence Engine built with **FastAPI**, **Computer Vision**, **Vector Databases**, and modern **AI/NLP techniques**.
 
+<p align="center"> <img src="https://img.shields.io/badge/Python-3.13-3776AB?logo=python&logoColor=white" alt="Python"> <img src="https://img.shields.io/badge/FastAPI-0.138.1-009688?logo=fastapi&logoColor=white" alt="FastAPI"> <img src="https://img.shields.io/badge/Docker-Containerized-2496ED?logo=docker&logoColor=white" alt="Docker"> <img src="https://img.shields.io/badge/Qdrant-Vector_DB-DC244C?logo=qdrant&logoColor=white" alt="Qdrant"> <img src="https://img.shields.io/badge/PaddleOCR-OCR-00A5E0?logo=paddlepaddle&logoColor=white" alt="PaddleOCR"> <img src="https://img.shields.io/badge/PyMuPDF-PDF_Processing-000000?logo=adobeacrobatreader&logoColor=white" alt="PyMuPDF"> <img src="https://img.shields.io/badge/Sentence_Transformers-Embeddings-FF6F00" alt="Sentence Transformers"> <img src="https://img.shields.io/badge/HuggingFace-BGE-yellow?logo=huggingface&logoColor=black" alt="HuggingFace"> </p>
+
+<p align="center"> <img src="https://img.shields.io/badge/Status-In_Development-orange" alt="Project Status"> <img src="https://img.shields.io/badge/Architecture-Modular-blue" alt="Architecture"> <img src="https://img.shields.io/badge/Focus-AI_Engineering-purple" alt="AI Engineering"> </p>
+
 The system is designed to ingest, process, understand, and retrieve information from PDF and image documents using OCR, document classification, semantic chunking, vector embeddings, and Qdrant.
 
 The project is being developed as a backend-focused **AI Engineering portfolio project**, with a strong emphasis on modular architecture, separation of concerns, containerization, and production-oriented design.
