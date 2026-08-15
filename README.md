@@ -1,4 +1,4 @@
-# 📄 Document Intelligence Engine
+#  Document Intelligence Engine
 
 A production-oriented AI Document Intelligence Engine built with **FastAPI**, **Computer Vision**, **Vector Databases**, and modern **AI/NLP techniques**.
 
@@ -12,15 +12,8 @@ The project is being developed as a backend-focused **AI Engineering portfolio p
 
 ---
 
-## 🛠️ Tech Stack
 
-| Backend | AI / ML | Document Processing | Infrastructure |
-|---|---|---|---|
-| 🐍 Python | 🤗 HuggingFace | 📄 PyMuPDF | 🐳 Docker |
-| ⚡ FastAPI | 🧠 BGE | 🔎 PaddleOCR | 🗄️ Qdrant |
-| 📦 Pydantic | 🔢 Sentence Transformers | | 🔄 Docker Compose |
-
-# 🎯 Project Goal
+#  Project Goal
 
 Build a scalable AI backend capable of:
 
@@ -42,7 +35,7 @@ Build a scalable AI backend capable of:
 
 ---
 
-# 🛠️ Tech Stack
+#  Tech Stack
 
 ## Backend
 
@@ -73,7 +66,7 @@ Build a scalable AI backend capable of:
 
 ---
 
-# 📁 Project Structure
+#  Project Structure
 
 ```text
 document-intelligence-engine/
@@ -124,7 +117,7 @@ document-intelligence-engine/
 
 ---
 
-# 🔄 Document Processing Workflow
+#  Document Processing Workflow
 
 The current ingestion pipeline follows this flow:
 
@@ -190,7 +183,7 @@ BGE Embedding Generation
 
 ---
 
-## 📤 File Upload
+##  File Upload
 
 * PDF upload
 * PNG upload
@@ -202,7 +195,7 @@ BGE Embedding Generation
 
 ---
 
-## 📄 Document Processing
+##  Document Processing
 
 * Document Processing Pipeline
 * File Type Detection
@@ -212,7 +205,7 @@ BGE Embedding Generation
 
 ---
 
-## 📑 PDF Processing
+##  PDF Processing
 
 * PDF text extraction using PyMuPDF
 * Multi-page traversal
@@ -222,7 +215,7 @@ BGE Embedding Generation
 
 ---
 
-## 🔍 OCR Processing
+##  OCR Processing
 
 * PaddleOCR integration
 * OCR Service
@@ -248,7 +241,7 @@ Classify Document
 
 ---
 
-## 🧹 Text Processing
+##  Text Processing
 
 * Text cleaning
 * Smart text chunking
@@ -257,7 +250,7 @@ Classify Document
 
 ---
 
-## 🧠 Embedding Generation
+##  Embedding Generation
 
 * Sentence Transformers
 * BAAI/bge-small-en-v1.5
@@ -282,7 +275,7 @@ BGE-small-en-v1.5
 
 ---
 
-# 🗄️ Qdrant Vector Storage
+#  Qdrant Vector Storage
 
 Qdrant has now been integrated into the document processing pipeline.
 
@@ -382,7 +375,7 @@ This allows vector data to survive container recreation.
 
 ---
 
-# 🏗️ Current Architecture
+#  Current Architecture
 
 ```text
                          Client
@@ -435,7 +428,7 @@ This allows vector data to survive container recreation.
 
 ---
 
-# 🧩 Software Architecture
+#  Software Architecture
 
 The project follows a modular service-oriented architecture.
 
@@ -495,7 +488,7 @@ This architecture follows:
 
 ---
 
-# 📊 Current Progress
+#  Current Progress
 
 ## Current Phase
 
@@ -523,7 +516,7 @@ Qdrant Vector Storage
 
 ---
 
-# 🏆 Completed Milestones
+#  Completed Milestones
 
 ## Milestone 1 — Project Foundation
 
@@ -614,7 +607,7 @@ Document
 
 ---
 
-# 🚧 Current Status
+#  Current Status
 
 The document ingestion pipeline is complete.
 
@@ -638,9 +631,9 @@ The next major step is **Semantic Search**.
 
 ---
 
-# 🗺️ Roadmap
+#  Roadmap
 
-## ✅ Completed
+##  Completed
 
 * FastAPI Backend
 * File Upload
@@ -660,7 +653,7 @@ The next major step is **Semantic Search**.
 
 ---
 
-## 🔄 Next Step
+##  Next Step
 
 ### Semantic Search
 
@@ -690,7 +683,7 @@ Top-K Relevant Chunks
 
 ---
 
-## 🔜 Upcoming
+##  Upcoming
 
 ### Retrieval
 
@@ -749,7 +742,7 @@ The final goal is to build an end-to-end document intelligence system capable of
 
 ---
 
-# 👨‍💻 Author
+#  Author
 
 **Hesham Elwakeel**
 
@@ -762,7 +755,7 @@ Building production-oriented AI systems using Python, FastAPI, Computer Vision, 
 
 ---
 
-# 📌 Current Status
+#  Current Status
 
 > **Document ingestion and vector storage pipeline completed.**
 
