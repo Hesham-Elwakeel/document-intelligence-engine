@@ -25,6 +25,7 @@ from app.services.ocr_service import OCRService
 from app.services.text_cleaner import TextCleaner
 from app.services.chunking_service import ChunkService
 from app.services.embedding_service import EmbeddingService
+from app.services.qdrant_service import QdrantService
 
 
 class DocumentPipeline:
@@ -39,6 +40,10 @@ class DocumentPipeline:
         self.ocr_service = OCRService()
         self.chunk_service = ChunkService()
         self.embedding_service = EmbeddingService()
+        self.qdrant_service = QdrantService()
+        #to ensure the collection exists before storing data in it
+        self.qdrant_service.create_collection() 
+
 
     async def process(self, file_path: Path):
 
@@ -61,26 +66,22 @@ class DocumentPipeline:
 
         print("PDF pipeline selected")
 
-        # -------------------------------------------------------------
+        
         # Extract text directly from PDF
-        # -------------------------------------------------------------
         document = extract_text_from_pdf(file_path)
 
-        # -------------------------------------------------------------
+       
         # Clean extracted text
-        # -------------------------------------------------------------
         document.text = self.cleaner.clean(document.text)
         document.characters = len(document.text)
         document.is_empty = len(document.text.strip()) == 0
 
-        # -------------------------------------------------------------
+        
         # Decide whether OCR is required
-        # -------------------------------------------------------------
         decision = self.classifier.classify(document)
 
-        # -------------------------------------------------------------
+        
         # OCR Pipeline
-        # -------------------------------------------------------------
         if decision == "ocr":
 
             document = self.ocr_service.extract_text(file_path)
@@ -89,19 +90,19 @@ class DocumentPipeline:
             document.characters = len(document.text)
             document.is_empty = len(document.text.strip()) == 0
 
-        # -------------------------------------------------------------
+        
         # Split document into chunks
-        # -------------------------------------------------------------
         chunks = self.chunk_service.split(document.text)
 
-        # -------------------------------------------------------------
+        
         # Generate embeddings
-        # -------------------------------------------------------------
         embeddings = self.embedding_service.encode(chunks)
 
-        # -------------------------------------------------------------
+        # Store embeddings in Qdrant
+        self.qdrant_service.store_embeddings(embeddings)
+
+        
         # Final response
-        # -------------------------------------------------------------
         return {
             "pipeline": "pdf",
             "decision": decision,
@@ -117,27 +118,25 @@ class DocumentPipeline:
 
         print("Image pipeline selected")
 
-        # -------------------------------------------------------------
+       
         # OCR Extraction
-        # -------------------------------------------------------------
         document = self.ocr_service.extract_text(file_path)
 
-        # -------------------------------------------------------------
+        
         # Clean OCR text
-        # -------------------------------------------------------------
         document.text = self.cleaner.clean(document.text)
         document.characters = len(document.text)
         document.is_empty = len(document.text.strip()) == 0
 
-        # -------------------------------------------------------------
+        
         # Split into chunks
-        # -------------------------------------------------------------
         chunks = self.chunk_service.split(document.text)
 
-        # -------------------------------------------------------------
+        
         # Generate embeddings
-        # -------------------------------------------------------------
         embeddings = self.embedding_service.encode(chunks)
+
+        self.qdrant_service.store_embeddings(embeddings)
 
         return {
             "pipeline": "image",
