@@ -367,20 +367,20 @@ Direct Text    OCR Required
 * Embedding Generation
 * Docker Containerization
 * Pydantic Models
-
----
-
-##  In Progress
-
 * Qdrant Integration
 * Vector Storage
 * Collection Management
+---
+
+##  In Progress
+* Semantic Search
+
 
 ---
 
 ## Upcoming
 
-* Semantic Search
+
 * Retriever
 * RAG Pipeline
 * OpenAI Integration
