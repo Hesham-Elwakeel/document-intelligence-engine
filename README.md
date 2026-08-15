@@ -12,6 +12,14 @@ The project is being developed as a backend-focused **AI Engineering portfolio p
 
 ---
 
+## 🛠️ Tech Stack
+
+| Backend | AI / ML | Document Processing | Infrastructure |
+|---|---|---|---|
+| 🐍 Python | 🤗 HuggingFace | 📄 PyMuPDF | 🐳 Docker |
+| ⚡ FastAPI | 🧠 BGE | 🔎 PaddleOCR | 🗄️ Qdrant |
+| 📦 Pydantic | 🔢 Sentence Transformers | | 🔄 Docker Compose |
+
 # 🎯 Project Goal
 
 Build a scalable AI backend capable of:
