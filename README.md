@@ -374,8 +374,6 @@ Direct Text    OCR Required
 
 ##  In Progress
 * Semantic Search
-
-
 ---
 
 ## Upcoming
