@@ -1,109 +1,100 @@
 #  Document Intelligence Engine
 
-A production-ready AI Document Intelligence Engine built with **FastAPI**, **Computer Vision**, **Large Language Models (LLMs)**, and **Vector Databases**.
+📄 Document Intelligence Engine
 
-The system is designed to understand, process, index, retrieve, and reason over documents using OCR, semantic embeddings, Retrieval-Augmented Generation (RAG), and modern AI engineering practices.
+A production-oriented AI Document Intelligence Engine built with FastAPI, Computer Vision, Vector Databases, and modern AI/NLP techniques.
+
+The system is designed to ingest, process, understand, and retrieve information from PDF and image documents using OCR, document classification, semantic chunking, vector embeddings,  Retrieval-Augmented Generation (RAG), modern AI engineering practices, and Qdrant.
 
 ---
-
-#  Project Goal
+🎯 Project Goal
 
 Build a scalable AI backend capable of:
 
-* Uploading PDF and image documents
-* Detecting document types automatically
-* Extracting text from digital PDFs
-* Performing OCR on scanned documents
-* Classifying documents before processing
-* Cleaning and preprocessing extracted text
-* Splitting documents into semantic chunks
-* Generating vector embeddings
-* Storing embeddings in a Vector Database
-* Semantic Search
-* Retrieval-Augmented Generation (RAG)
-* Question Answering over documents
-* Document Summarization
-* Structured JSON extraction
-
----
-
-#  Tech Stack
-
-## Backend
-
-* Python
-* FastAPI
-* Uvicorn
-* Pydantic
-
-## AI & Document Processing
-
-* PyMuPDF
-* PaddleOCR
-* Sentence Transformers
-* BAAI/bge-small-en-v1.5
-* OpenAI API *(Planned)*
-
-## Vector Database
-
-* Qdrant *(In Progress)*
-
-## Infrastructure
-
-* Docker 
-* Docker Compose *(Planned)*
-* PostgreSQL *(Planned)*
-* Redis *(Planned)*
-
----
-
-#  Project Structure
-
-```text
+Uploading PDF and image documents
+Validating uploaded files
+Detecting document types automatically
+Extracting text from digital PDFs
+Performing OCR on scanned documents and images
+Classifying documents before processing
+Cleaning and preprocessing extracted text
+Splitting documents into semantic chunks
+Generating vector embeddings
+Storing embeddings in a Vector Database
+Semantic Search
+Retrieval-Augmented Generation (RAG)
+Question Answering over documents
+Document Summarization
+Structured JSON extraction
+🛠️ Tech Stack
+Backend
+Python
+FastAPI
+Uvicorn
+Pydantic
+AI & Document Processing
+PyMuPDF
+PaddleOCR
+Sentence Transformers
+BAAI/bge-small-en-v1.5
+OpenAI API (Planned)
+Vector Database
+Qdrant
+qdrant-client
+Infrastructure
+Docker
+Docker Compose
+PostgreSQL (Planned)
+Redis (Planned)
+📁 Project Structure
 document-intelligence-engine/
 
 ├── app/
-│   ├── api/
-│   ├── core/
-│   ├── pipelines/
-│   │   └── document_pipeline.py
-│   │
-│   ├── schemas/
-│   │   ├── chunk.py
-│   │   ├── document.py
-│   │   ├── embedding.py
-│   │   └── pipeline.py
-│   │
-│   ├── services/
-│   │   ├── chunking_service.py
-│   │   ├── document_classifier.py
-│   │   ├── embedding_service.py
-│   │   ├── file_service.py
-│   │   ├── ocr_service.py
-│   │   ├── pdf_service.py
-│   │   └── text_cleaner.py
-│   │
-│   ├── utils/
-│   └── main.py
 │
+├── api/
+│
+├── core/
+│
+├── pipelines/
+│   └── document_pipeline.py
+│
+├── schemas/
+│   ├── chunk.py
+│   ├── document.py
+│   ├── embedding.py
+│   └── pipeline.py
+│
+├── services/
+│   ├── chunking_service.py
+│   ├── document_classifier.py
+│   ├── embedding_service.py
+│   ├── file_service.py
+│   ├── ocr_service.py
+│   ├── pdf_service.py
+│   ├── qdrant_service.py
+│   └── text_cleaner.py
+│
+├── utils/
+│
+└── main.py
+
 ├── data/
 │   └── uploads/
-│
+
 ├── docs/
+
 ├── tests/
-│
-├── Dockerfile
-├── .dockerignore
+
 ├── requirements.txt
+├── Dockerfile
+├── docker-compose.yml
+├── .dockerignore
 ├── README.md
 └── .env.example
-```
+🔄 Document Processing Workflow
 
----
+The current ingestion pipeline follows this flow:
 
-#  Processing Workflow
-
-```text
 Upload Document
         │
         ▼
@@ -123,340 +114,486 @@ Document Pipeline
    PDF Pipeline          Image Pipeline
         │                      │
         ▼                      ▼
-PDF Extraction           PaddleOCR
+PDF Text Extraction      PaddleOCR
         │                      │
-        └──────────────┬───────┘
-                       ▼
-                DocumentData
-                       ▼
-                Text Cleaning
-                       ▼
-                  Chunking
-                       ▼
-          BGE Embedding Generation
-                       ▼
-              Qdrant Vector DB
-                       ▼
-             Semantic Retrieval
-                       ▼
-             Large Language Model
-                       ▼
-                 Final Answer
-```
+        ▼                      │
+Document Classification        │
+        │                      │
+   ┌────┴────┐                 │
+   ▼         ▼                 │
+  Text       OCR               │
+   │         │                 │
+   └────┬────┘─────────────────┘
+        ▼
+   Text Cleaning
+        │
+        ▼
+      Chunking
+        │
+        ▼
+BGE Embedding Generation
+        │
+        ▼
+      Qdrant
+        │
+        ▼
+  Vector Storage
+✅ Features Implemented
+Backend Foundation
+FastAPI application
+Modular project architecture
+API routing
+Swagger / OpenAPI documentation
+Pydantic schemas
+Service-based architecture
+Pipeline-based document processing
+📤 File Upload
+PDF upload
+PNG upload
+JPG upload
+JPEG upload
+File type validation
+UUID-based file naming
+Automatic file storage
+📄 Document Processing
+Document Processing Pipeline
+File Type Detection
+Pipeline Routing
+Processing Orchestrator
+Unified Document Data Model
+📑 PDF Processing
+PDF text extraction using PyMuPDF
+Multi-page traversal
+Character counting
+Empty document detection
+Text preview generation
+🔍 OCR Processing
+PaddleOCR integration
+OCR Service
+Image text extraction
+Scanned PDF processing
+OCR decision engine
 
----
+The system determines whether a PDF already contains extractable text or requires OCR.
 
-#  Features Implemented
+PDF
+ │
+ ▼
+Extract Text
+ │
+ ▼
+Classify Document
+ │
+ ├── Text Available ──► Continue
+ │
+ └── OCR Required ────► PaddleOCR
+🧹 Text Processing
+Text cleaning
+Smart text chunking
+Overlapping chunks
+Chunk metadata
+🧠 Embedding Generation
+Sentence Transformers
+BAAI/bge-small-en-v1.5
+384-dimensional embeddings
+Normalized embeddings
+Embedding data model
 
-## Backend Foundation
+Current embedding flow:
 
-* FastAPI application
-* Modular project architecture
-* API routing
-* Swagger documentation
-* Environment configuration
+Document
+    │
+    ▼
+Text Chunks
+    │
+    ▼
+BGE-small-en-v1.5
+    │
+    ▼
+384-dimensional Vectors
+🗄️ Qdrant Vector Storage
 
----
+Qdrant has now been integrated into the document processing pipeline.
 
-## File Upload
+The system creates a Qdrant collection named:
 
-* PDF upload
-* PNG upload
-* JPG upload
-* File type validation
-* UUID-based file naming
-* Automatic file storage
+documents
 
----
+with:
 
-## Document Processing
+Vector Size: 384
+Distance: Cosine
 
-* Document Processing Pipeline
-* File Type Detection
-* Pipeline Routing
-* Processing Orchestrator
+Each document chunk is stored as a Qdrant Point containing:
 
----
+Point
+│
+├── ID
+│
+├── Vector
+│   └── 384 dimensions
+│
+└── Payload
+    ├── text
+    ├── chunk_index
+    ├── page
+    └── source
+Qdrant Service
 
-## PDF Processing
+The project includes:
 
-* PDF Text Extraction
-* Multi-page traversal
-* Character counting
-* Empty document detection
-* Text preview generation
+app/services/qdrant_service.py
 
----
+The service currently provides:
 
-## OCR Processing
+Collection creation
+Embedding storage
+Vector configuration
+Payload management
+Qdrant client initialization
+🐳 Docker
 
-* PaddleOCR Integration
-* OCR Service
-* Image Text Extraction
-* Scanned PDF Support
+The application is containerized using Docker.
 
----
+The Docker image is based on:
 
-## Text Processing
+python:3.13-slim
 
-* Text Cleaning
-* Smart Text Chunking
-* Overlapping Chunks
-* Chunk Metadata
+The Docker configuration includes system dependencies required by the document processing and OCR stack.
 
----
+The project also uses a .dockerignore file to prevent unnecessary files such as the local virtual environment from being sent to the Docker build context.
 
-## Embedding Generation
+🐳 Docker Compose
 
-* Sentence Transformers
-* BAAI/bge-small-en-v1.5
-* Normalized Embeddings
-* Embedding Data Model
+The project uses Docker Compose to run the application and Qdrant together.
 
----
+Current architecture:
 
-## Document Intelligence
+Docker Compose
+│
+├── API
+│   └── FastAPI
+│
+└── Qdrant
+    └── Vector Database
 
-* Document Classification
-* OCR Decision Engine
-* Unified Document Data Model
-* Pydantic Schemas
+The API communicates with Qdrant through the Docker network using:
 
----
+QDRANT_URL=http://qdrant:6333
 
-## Software Architecture
+Qdrant data is persisted using a Docker volume:
 
-* Service Layer
-* Pipeline Architecture
-* Separation of Concerns
-* Modular Design
-* Clean Code Principles
+qdrant_data
 
----
+This allows vector data to survive container recreation.
 
-## Containerization
+🏗️ Current Architecture
+                         Client
+                           │
+                           ▼
+                     FastAPI API
+                           │
+                           ▼
+                    Upload Endpoint
+                           │
+                           ▼
+                     File Service
+                           │
+                           ▼
+                  Document Pipeline
+                           │
+              ┌────────────┴────────────┐
+              ▼                         ▼
+        PDF Pipeline              Image Pipeline
+              │                         │
+              ▼                         ▼
+       PDF Extraction               OCR Service
+              │                         │
+              ▼                         │
+      Document Classifier              │
+              │                         │
+         ┌────┴────┐                    │
+         ▼         ▼                    │
+        Text       OCR                  │
+         │         │                    │
+         └────┬────┘────────────────────┘
+              ▼
+        Text Cleaner
+              │
+              ▼
+        Chunk Service
+              │
+              ▼
+      Embedding Service
+              │
+              ▼
+        Qdrant Service
+              │
+              ▼
+           Qdrant
+              │
+              ▼
+      Vector Storage
+🧩 Software Architecture
 
-* Dockerfile
-* Docker Image
-* Containerized FastAPI Application
+The project follows a modular service-oriented architecture.
 
----
+API Layer
 
-#  Current Progress
+Responsible for:
 
-## Current Phase
+HTTP requests
+File uploads
+API routing
+Request/response handling
+Pipeline Layer
 
-> **Vector Database Integration (Qdrant)**
+Responsible for:
 
----
+Orchestrating document processing
+Routing documents
+Coordinating multiple services
+Service Layer
 
-## Completed Milestones
+Responsible for specialized operations:
 
-### Milestone 1 — Project Foundation
+FileService
+PDFService
+OCRService
+DocumentClassifier
+TextCleaner
+ChunkService
+EmbeddingService
+QdrantService
+Schema Layer
 
-* Project Initialization
-* FastAPI Setup
-* API Routing
-* Swagger Documentation
+Responsible for structured data models using Pydantic.
 
----
+Examples:
 
-### Milestone 2 — Document Processing Core
+DocumentData
+ChunkData
+EmbeddingData
+PipelineData
 
-* Upload Endpoint
-* File Validation
-* File Storage Service
-* Document Processing Pipeline
-* Document Type Detection
-* PDF Text Extraction
-* Document Classification
-* Unified Document Model (Pydantic)
+This architecture follows:
 
----
+Separation of Concerns
+Single Responsibility
+Modular Design
+Service-Oriented Design
+Pipeline-Based Processing
+Clean Code Principles
+📊 Current Progress
+Current Phase
 
-### Milestone 3 — OCR Integration
+Vector Database Integration — Completed
 
-* PaddleOCR Integration
-* OCR Service
-* Image Processing
-* Scanned PDF Processing
+The project has successfully reached the end of the document ingestion and vector storage phase.
 
----
+Current pipeline:
 
-### Milestone 4 — Text Processing & Embeddings
-
-* Text Cleaning
-* Chunking Service
-* Overlapping Chunks
-* Embedding Service
-* Sentence Transformers Integration
-* BAAI/bge-small-en-v1.5 Integration
-
----
-
-### Milestone 5 — Docker Containerization
-
-* Dockerfile
-* Docker Image
-* Containerized FastAPI Application
-* Optimized Docker Build Context
-* `.dockerignore`
-
----
-
-# Current Architecture
-
-```text
-Client
-   │
-   ▼
-FastAPI API
-   │
-   ▼
+Upload
+  ↓
+Document Processing
+  ↓
+OCR / PDF Extraction
+  ↓
+Text Cleaning
+  ↓
+Chunking
+  ↓
+Embeddings
+  ↓
+Qdrant Vector Storage
+🏆 Completed Milestones
+Milestone 1 — Project Foundation
+Project Initialization
+FastAPI Setup
+API Routing
+Swagger Documentation
+Modular Architecture
+Milestone 2 — Document Processing Core
 Upload Endpoint
-   │
-   ▼
-Validation
-   │
-   ▼
-File Service
-   │
-   ▼
-Document Pipeline
-   │
-   ├────────────────────────────┐
-   ▼                            ▼
-PDF Pipeline              Image Pipeline
-   │                            │
-   ▼                            ▼
-PDF Service               OCR Service
-   │                            │
-   ├──────────────┐             │
-   ▼              ▼             ▼
-Direct Text    OCR Required
-        │             │
-        └─────────────┘
-               ▼
-         DocumentData
-               ▼
-         Text Cleaner
-               ▼
-      Chunking Service
-               ▼
-     Embedding Service
-               ▼
-        EmbeddingData
-               ▼
-      Qdrant (Next Step)
-```
+File Validation
+File Storage Service
+Document Processing Pipeline
+Document Type Detection
+PDF Text Extraction
+Document Classification
+Unified Document Model
+Milestone 3 — OCR Integration
+PaddleOCR Integration
+OCR Service
+Image Processing
+Scanned PDF Processing
+OCR Decision Engine
+Milestone 4 — Text Processing & Embeddings
+Text Cleaning
+Chunking Service
+Overlapping Chunks
+Embedding Service
+Sentence Transformers Integration
+BAAI/bge-small-en-v1.5 Integration
+384-dimensional normalized embeddings
+Milestone 5 — Docker & Containerization
+Dockerfile
+Docker Image
+Docker Build Optimization
+.dockerignore
+Docker Container Execution
+Docker Compose
+API Container
+Qdrant Container
+Docker Networking
+Persistent Qdrant Volume
+Milestone 6 — Qdrant Integration
+qdrant-client integration
+Qdrant Service
+Qdrant Collection Creation
+Vector Configuration
+Cosine Similarity
+Point Creation
+Vector Storage
+Payload Storage
+API → Qdrant communication
+Persistent Vector Database
 
----
+The current system has successfully stored document embeddings in Qdrant.
 
-#  Roadmap
+Example:
 
-##  Completed
+Document
+   ↓
+14 Chunks
+   ↓
+14 Embeddings
+   ↓
+14 Qdrant Points
+🚧 Current Status
 
-* FastAPI Backend
-* File Upload
-* File Storage
-* PDF Extraction
-* OCR Integration
-* Document Classification
-* Text Cleaning
-* Document Chunking
-* Embedding Generation
-* Docker Containerization
-* Pydantic Models
-* Qdrant Integration
-* Vector Storage
-* Collection Management
----
+The document ingestion pipeline is complete.
 
-##  In Progress
-* Semantic Search
----
+The system can currently:
 
-## Upcoming
+Upload
+   ↓
+Extract / OCR
+   ↓
+Clean
+   ↓
+Chunk
+   ↓
+Embed
+   ↓
+Store in Qdrant
 
+The next major step is Semantic Search.
 
-* Retriever
-* RAG Pipeline
-* OpenAI Integration
-* Question Answering
-* Document Summarization
-* Structured JSON Extraction
-* Docker Compose
-* PostgreSQL
-* Redis
+🗺️ Roadmap
+✅ Completed
+FastAPI Backend
+File Upload
+File Validation
+File Storage
+PDF Extraction
+OCR Integration
+Document Classification
+Text Cleaning
+Document Chunking
+Embedding Generation
+Docker
+Docker Compose
+Qdrant Integration
+Vector Storage
+Persistent Qdrant Storage
+🔄 Next Step
+Semantic Search
 
----
+Implement:
 
-# 🚀 Quick Start
+Query embedding
+Qdrant similarity search
+Cosine similarity
+Top-K retrieval
+Relevant chunk retrieval
+Search service
 
-## Clone Repository
+Target workflow:
 
-```bash
-git clone https://github.com/Hesham-Elwakeel/document-intelligence-engine.git
+User Question
+      │
+      ▼
+Question Embedding
+      │
+      ▼
+Qdrant Similarity Search
+      │
+      ▼
+Top-K Relevant Chunks
+🔜 Upcoming
+Retrieval
+Retriever component
+Search abstraction
+Metadata filtering
+Context selection
+RAG
+Retrieval-Augmented Generation pipeline
+Context construction
+Prompt construction
+LLM integration
+LLM
+OpenAI API
+Question Answering
+Context-aware responses
+Document Intelligence
+Document Summarization
+Structured JSON Extraction
+Advanced document understanding
+Infrastructure
+PostgreSQL
+Redis
+Docker Compose improvements
+Production deployment
+🎯 Project Vision
 
-cd document-intelligence-engine
-```
+This project is being developed as a production-oriented AI Engineering portfolio project.
 
----
+The goal is not only to build an AI application, but also to apply modern software engineering and AI system design principles.
 
-## Build Docker Image
+The project focuses on:
 
-```bash
-docker build -t document-intelligence-engine .
-```
+Clean Architecture
+SOLID Principles
+Separation of Concerns
+Service-Oriented Design
+Pipeline-Based Processing
+Vector Search
+Retrieval-Augmented Generation
+Containerization
+Production-oriented backend engineering
 
----
+The final goal is to build an end-to-end document intelligence system capable of understanding documents and answering questions using retrieved document context.
 
-## Run Docker Container
+👨‍💻 Author
 
-```bash
-docker run -p 8000:8000 --name document-engine document-intelligence-engine
-```
+Hesham Elwakeel
 
----
+AI Engineer | Computer Vision Engineer | Data Scientist
 
-## API Documentation
+Building production-oriented AI systems using Python, FastAPI, Computer Vision, Vector Databases, Retrieval-Augmented Generation (RAG), and Large Language Models.
 
-After starting the container, open:
+LinkedIn: https://linkedin.com/in/hesham-elwakeel
+Email: heshamelwakeel17@gmail.com
+📌 Current Status
 
-```text
-http://localhost:8000/docs
-```
+Document ingestion and vector storage pipeline completed.
 
----
+The system currently implements:
 
-# Project Vision
+Upload → PDF/OCR Processing → Cleaning → Chunking → Embeddings → Qdrant Vector Storage
 
-This project is being developed as a **production-oriented AI Engineering portfolio project**.
-
-The objective is not only to build an AI application but also to follow modern software engineering and MLOps practices, including:
-
-* Clean Architecture
-* SOLID Principles
-* Separation of Concerns
-* Pipeline-Based Processing
-* Service-Oriented Design
-* Docker Containerization
-* Modular AI Components
-* Production-Ready Code
-
-The final system will support a complete Retrieval-Augmented Generation (RAG) workflow, enabling intelligent question answering over enterprise documents.
-
----
-
-# Author
-
-**Hesham Elwakeel**
-
-**AI Engineer | Computer Vision Engineer | Data Scientist**
-
-Building production-ready AI systems 
-
-**LinkedIn** https://linkedin.com/in/hesham-elwakeel **Email** [heshamelwakeel17@gmail.com](mailto:heshamelwakeel17@gmail.com)
+The project is now entering the Semantic Search and Retrieval phase, which will serve as the foundation for the upcoming RAG pipeline.
 
 
 
