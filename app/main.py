@@ -3,6 +3,7 @@ from app.api.health import router as health_router
 from app.api.upload import router as upload_router
 from app.services.file_service import save_file
 #from app.services.file_service import UPLOAD_DIR
+from app.api.search import router as search_router
 
 app = FastAPI(
     title = "Document Intelligence Engine",
@@ -12,9 +13,9 @@ app = FastAPI(
 
 app.include_router(health_router)
 app.include_router(upload_router)
-
+app.include_router(search_router)
 
 @app.get("/")
 def root():
-    return {"message": "Welcome to Document Intelligence Engine"}
+    return {"message": "Welcome to Document Intelligence Engine-Hesham Elwakeel"}
 

@@ -6,40 +6,56 @@ from app.schemas.embedding import EmbeddingData
 
 class EmbeddingService:
     """
-    Service responsible for converting text chunks into vector embeddings.
+    Service responsible for converting text into vector embeddings.
     """
 
+    _model = None
+
     def __init__(self):
-        # load the embedding model
-        self.model = SentenceTransformer(
-            "BAAI/bge-small-en-v1.5"
-        )
+        if EmbeddingService._model is None:
+            print("Loading embedding model...")
+            EmbeddingService._model = SentenceTransformer(
+                "BAAI/bge-small-en-v1.5"
+            )
 
-    def encode(self, chunks: list[ChunkData]) -> list[EmbeddingData]:
-        """
-        Generate embeddings for a list of document chunks.
-        """
+        self.model = EmbeddingService._model
 
-        # extract only the text from each chunk
+    def encode(
+        self,
+        chunks: list[ChunkData],
+    ) -> list[EmbeddingData]:
+
         texts = [chunk.text for chunk in chunks]
 
-        # generate embeddings
         vectors = self.model.encode(
             texts,
-            normalize_embeddings=True
+            normalize_embeddings=True,
         )
 
         embeddings = []
 
-        # pair each chunk with its embedding
         for chunk, vector in zip(chunks, vectors):
 
             embeddings.append(
                 EmbeddingData(
                     text=chunk.text,
                     embedding=vector.tolist(),
-                    chunk_index=chunk.id
+                    chunk_index=chunk.id,
+                    page=chunk.page,
+                    source=chunk.source,
                 )
             )
 
         return embeddings
+
+    def encode_query(
+        self,
+        query: str,
+    ) -> list[float]:
+
+        vector = self.model.encode(
+            query,
+            normalize_embeddings=True,
+        )
+
+        return vector.tolist()

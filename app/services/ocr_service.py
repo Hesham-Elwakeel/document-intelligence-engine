@@ -2,9 +2,9 @@ from pathlib import Path
 
 from paddleocr import PaddleOCR
 
-from app.schemas.document import DocumentData
-
+from app.schemas.document import DocumentData, PageData
 from app.services.text_cleaner import TextCleaner
+
 
 class OCRService:
     """
@@ -23,32 +23,50 @@ class OCRService:
 
     def extract_text(self, file_path: Path) -> DocumentData:
         """
-        run OCR on an image or scanned PDF and return the extracted text
+        Run OCR on an image or scanned PDF and return
+        extracted text while preserving page boundaries.
         """
 
         print(f"Running OCR on: {file_path}")
 
         result = self.ocr.predict(str(file_path))
 
-        text = self._extract_plain_text(result)
+        page_data = self._extract_pages(result)
+
+        text = "\n".join(
+            page.text
+            for page in page_data
+        )
 
         return DocumentData(
             text=text,
             characters=len(text),
             is_empty=len(text.strip()) == 0,
-            source="ocr"
+            pages=len(page_data),
+            source=file_path.name,
+            page_data=page_data,
         )
 
-    def _extract_plain_text(self, result) -> str:
+    def _extract_pages(self, result) -> list[PageData]:
         """
-        Convert PaddleOCR output into plain text.
+        Convert PaddleOCR output into page-level text.
         """
 
-        lines = []
+        pages = []
 
-        for page in result:
+        for page_number, page in enumerate(result, start=1):
 
             if isinstance(page, dict):
-                lines.extend(page.get("rec_texts", []))
 
-        return "\n".join(lines)
+                page_text = "\n".join(
+                    page.get("rec_texts", [])
+                )
+
+                pages.append(
+                    PageData(
+                        page=page_number,
+                        text=page_text,
+                    )
+                )
+
+        return pages

@@ -1,29 +1,39 @@
 import fitz
 from pathlib import Path
 
-from app.schemas.document import DocumentData
+from app.schemas.document import DocumentData, PageData
 
 
 def extract_text_from_pdf(file_path: Path) -> DocumentData:
     """
-    Extract all text from a PDF document.
+    Extract text from a PDF document while preserving page boundaries.
     """
 
     document = fitz.open(file_path)
 
-    text = ""
+    page_data = []
+    all_text = ""
 
-    for page in document:
-        text += page.get_text()
+    for page_number, page in enumerate(document, start=1):
 
-    result = DocumentData(
-        text=text,
-        characters=len(text),
-        is_empty=len(text.strip()) == 0,
-        pages=len(document),
-        source="pdf"
-    )
+        page_text = page.get_text()
+
+        page_data.append(
+            PageData(
+                page=page_number,
+                text=page_text,
+            )
+        )
+
+        all_text += page_text
 
     document.close()
 
-    return result
+    return DocumentData(
+        text=all_text,
+        characters=len(all_text),
+        is_empty=len(all_text.strip()) == 0,
+        pages=len(page_data),
+        source=file_path.name,
+        page_data=page_data,
+    )

@@ -1,35 +1,43 @@
 from app.schemas.chunk import ChunkData
+from app.schemas.document import PageData
 
 
 class ChunkService:
     """
-    Split long text into smaller overlapping chunks.
+    Split document pages into smaller overlapping chunks
+    while preserving page and source metadata.
     """
 
     def split(
         self,
-        text: str,
+        pages: list[PageData],
+        source: str | None = None,
         chunk_size: int = 500,
-        overlap: int = 100
+        overlap: int = 100,
     ) -> list[ChunkData]:
 
         chunks = []
 
-        start = 0
+        for page in pages:
 
-        while start < len(text):
+            text = page.text
+            start = 0
 
-            end = start + chunk_size
+            while start < len(text):
 
-            chunk_text = text[start:end]
+                end = start + chunk_size
 
-            chunks.append(
-                ChunkData(
-                    id=len(chunks),
-                    text=chunk_text
+                chunk_text = text[start:end]
+
+                chunks.append(
+                    ChunkData(
+                        id=len(chunks),
+                        text=chunk_text,
+                        page=page.page,
+                        source=source,
+                    )
                 )
-            )
 
-            start += chunk_size - overlap
+                start += chunk_size - overlap
 
         return chunks

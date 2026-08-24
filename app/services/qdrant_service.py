@@ -2,7 +2,14 @@ from uuid import uuid4
 import os
 
 from qdrant_client import QdrantClient
-from qdrant_client.models import Distance, PointStruct, VectorParams
+from qdrant_client.models import (
+    Distance,
+    PointStruct,
+    VectorParams,
+    Filter,
+    FieldCondition,
+    MatchValue,
+)
 
 from app.schemas.embedding import EmbeddingData
 
@@ -17,14 +24,12 @@ class QdrantService:
     VECTOR_SIZE = 384
 
     def __init__(self):
-        """
-        Initialize Qdrant client.
-        """
-
         url = os.getenv(
             "QDRANT_URL",
             "http://localhost:6333"
         )
+
+        print("QdrantService initialized")
 
         self.client = QdrantClient(url=url)
 
@@ -75,3 +80,41 @@ class QdrantService:
             collection_name=self.COLLECTION_NAME,
             points=points,
         )
+
+    def search(
+        self,
+        query_vector: list[float],
+        limit: int = 5,
+        score_threshold: float | None = None,
+        source: str | None = None,
+    ):
+        """
+        Search for the most similar document chunks
+        using vector similarity and optional metadata filtering.
+        """
+
+        # No filter by default
+        query_filter = None
+
+        # Filter results by document source if provided
+        if source is not None:
+            query_filter = Filter(
+                must=[
+                    FieldCondition(
+                        key="source",
+                        match=MatchValue(value=source),
+                    )
+                ]
+            )
+
+        # Search Qdrant
+        results = self.client.query_points(
+            collection_name=self.COLLECTION_NAME,
+            query=query_vector,
+            limit=limit,
+            score_threshold=score_threshold,
+            query_filter=query_filter,
+            with_payload=True,
+        )
+
+        return results.points
