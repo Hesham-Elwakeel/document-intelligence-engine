@@ -750,7 +750,8 @@ The final goal is to build an end-to-end document intelligence system capable of
 
 Building production-oriented AI systems using Python, FastAPI, Computer Vision, Vector Databases, Retrieval-Augmented Generation (RAG), and Large Language Models.
 
-* LinkedIn: https://linkedin.com/in/hesham-elwakeel   * Email: [heshamelwakeel17@gmail.com](mailto:heshamelwakeel17@gmail.com)
+* LinkedIn: https://linkedin.com/in/hesham-elwakeel
+* Email: [heshamelwakeel17@gmail.com](mailto:heshamelwakeel17@gmail.com)
 
 ---
 
